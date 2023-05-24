@@ -73,11 +73,6 @@
     }
 }
 
-.plus-icon {
-    width: 20px;
-    margin-right: 8px;
-}
-
 .more-btn {
     font-size: 2rem;
     margin-left: 28px;
@@ -86,6 +81,10 @@
     &:hover {
         cursor: pointer;
     }
+}
+
+.plus-icon {
+    margin-right: 8px;
 }
 
 .actions {
