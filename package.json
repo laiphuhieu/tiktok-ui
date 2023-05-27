@@ -12,7 +12,9 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@tippyjs/react": "^4.2.6",
+    "axios": "^1.4.0",
     "classnames": "^2.3.2",
+    "eslint-plugin-react-hooks": "^5.0.0-canary-9a72e6227-20230525",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,6 +35,9 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "plugins": [
+      "react"
+    ],
     "extends": [
       "react-app",
       "react-app/jest"

@@ -5,8 +5,9 @@ import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 
 import { Wrapper as PopperWrapper } from '~/components/Layout/Popper';
-// eslint-disable-next-line
 import { SearchIcon, CloseIcon, LoadingIcon } from '~/components/Icons';
+import { useDebounce } from '~/hooks';
+import request from '~/utils/request';
 
 const cx = classNames.bind(styles);
 
@@ -16,26 +17,33 @@ function Search() {
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
 
+    const debounced = useDebounce(searchValue, 500);
+
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
 
         setLoading(true);
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then((res) => res.json())
+        request
+            .get('users/search', {
+                params: {
+                    q: debounced,
+                    type: 'less',
+                },
+            })
             .then((res) => {
-                setSearchResult(res.data);
+                setSearchResult(res.data.data);
                 setLoading(false);
             })
             .catch(() => {
                 setLoading(false);
             });
-    }, [searchValue]);
+    }, [debounced]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -45,6 +53,18 @@ function Search() {
 
     const handleHideResult = () => {
         setShowResult(false);
+    };
+
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
     };
 
     return (
@@ -70,7 +90,7 @@ function Search() {
                     value={searchValue}
                     placeholder="Search"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {/* spliter */}
@@ -87,9 +107,9 @@ function Search() {
                 )}
                 <span className={cx('spliter')}></span>
                 {/* Search-btn */}
-                <button className={cx('search-btn')}>
+                <div className={cx('search-btn')} onMouseDown={handleSubmit}>
                     <SearchIcon />
-                </button>
+                </div>
             </form>
         </HeadlessTippy>
     );

@@ -51,6 +51,7 @@
         padding-right: 40px;
         font-size: 1.6rem;
         background-color: transparent;
+        font-family: var(--font-family);
         flex: 1;
         width: 391px;
     }
@@ -84,6 +85,9 @@
     &:hover {
         cursor: pointer;
         background-color: rgba(22, 24, 35, 0.03);
+        svg {
+            fill: rgb(22, 34, 35);
+        }
     }
 
     &:active {
