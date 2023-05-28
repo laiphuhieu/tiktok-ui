@@ -12,8 +12,8 @@ import {
     ProfileIcon,
     SettingIcon,
     SignOutIcon,
-    UploadIcon,
     MoreIcon,
+    InboxIcon,
 } from '~/components/Icons';
 
 import Button from '~/components/Button';
@@ -111,12 +111,13 @@ function Header() {
                             </Button>
                             <Tippy delay={[0, 200]} content="Messages" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <UploadIcon />
+                                    <MessageIcon />
                                 </button>
                             </Tippy>
                             <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <MessageIcon />
+                                    <InboxIcon />
+                                    <span className={cx('badge')}>12</span>
                                 </button>
                             </Tippy>
                         </>

@@ -8,7 +8,7 @@
 .clear,
 .loading {
     position: absolute;
-    right: calc(var(--search-button-width) + 16px);
+    right: var(--search-button-width);
     color: rgba(22, 24, 35, 0.34);
     background-color: transparent;
     top: 50%;

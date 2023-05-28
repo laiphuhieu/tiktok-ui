@@ -68,50 +68,52 @@ function Search() {
     };
 
     return (
-        <HeadlessTippy
-            interactive
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex={-1} {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {searchResult.map((result) => (
-                            <AccountItem key={result.id} data={result} />
-                        ))}
-                    </PopperWrapper>
-                </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            {/* search box */}
-            <form className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder="Search"
-                    spellCheck={false}
-                    onChange={handleChange}
-                    onFocus={() => setShowResult(true)}
-                />
-                {/* spliter */}
-                {!!searchValue && !loading && (
-                    <div className={cx('clear')} onClick={handleClear}>
-                        <CloseIcon />
+        <div>
+            <HeadlessTippy
+                interactive
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex={-1} {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {searchResult.map((result) => (
+                                <AccountItem key={result.id} data={result} />
+                            ))}
+                        </PopperWrapper>
                     </div>
                 )}
+                onClickOutside={handleHideResult}
+            >
+                {/* search box */}
+                <form className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder="Search"
+                        spellCheck={false}
+                        onChange={handleChange}
+                        onFocus={() => setShowResult(true)}
+                    />
+                    {/* spliter */}
+                    {!!searchValue && !loading && (
+                        <div className={cx('clear')} onClick={handleClear}>
+                            <CloseIcon />
+                        </div>
+                    )}
 
-                {loading && (
-                    <button className={cx('loading')}>
-                        <LoadingIcon />
-                    </button>
-                )}
-                <span className={cx('spliter')}></span>
-                {/* Search-btn */}
-                <div className={cx('search-btn')} onMouseDown={handleSubmit}>
-                    <SearchIcon />
-                </div>
-            </form>
-        </HeadlessTippy>
+                    {loading && (
+                        <button className={cx('loading')}>
+                            <LoadingIcon />
+                        </button>
+                    )}
+                    <span className={cx('spliter')}></span>
+                    {/* Search-btn */}
+                    <div className={cx('search-btn')} onMouseDown={handleSubmit}>
+                        <SearchIcon />
+                    </div>
+                </form>
+            </HeadlessTippy>
+        </div>
     );
 }
 
