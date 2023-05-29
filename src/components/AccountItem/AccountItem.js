@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './AccountItem.module.scss';
 import { Link } from 'react-router-dom';
-import Image from '~/components/Image';
-import { LegitCheckIcon } from '~/components/Icons';
+import Image from '~/components/Image/Image';
+import { LegitCheckIcon } from '~/components/Icons/Icons';
 
 const cx = classNames.bind(styles);
 

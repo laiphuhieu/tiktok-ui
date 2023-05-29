@@ -14,14 +14,14 @@ import {
     SignOutIcon,
     MoreIcon,
     InboxIcon,
-} from '~/components/Icons';
+} from '~/components/Icons/Icons';
 
-import Button from '~/components/Button';
+import Button from '~/components/Button/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import Menu from '~/layouts/Popper/Menu';
-import Image from '~/components/Image';
-import Search from '../Search';
+import Menu from '~/layouts/Popper/Menu/Menu';
+import Image from '~/components/Image/Image';
+import Search from '../Search/Search';
 import config from '~/config';
 
 const cx = classNames.bind(styles);
