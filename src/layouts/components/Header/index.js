@@ -19,10 +19,10 @@ import {
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import Menu from '~/components/Layout/Popper/Menu';
+import Menu from '~/layouts/Popper/Menu';
 import Image from '~/components/Image';
 import Search from '../Search';
-import routesConfig from '~/config/routes';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -93,7 +93,7 @@ function Header() {
             <div className={cx('inner')}>
                 {/* logo */}
                 <div className={cx('logo')}>
-                    <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <Link to={config.routes.home} className={cx('logo-link')}>
                         <img src={images.logo} alt="Tiktok" />
                     </Link>
                 </div>

@@ -4,7 +4,7 @@ import AccountItem from '~/components/AccountItem';
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 
-import { Wrapper as PopperWrapper } from '~/components/Layout/Popper';
+import { Wrapper as PopperWrapper } from '~/layouts/Popper';
 import { SearchIcon, CloseIcon, LoadingIcon } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
 import request from '~/utils/request';
